@@ -2,6 +2,8 @@
 
 A React-based frontend application for managing tasks and memories in the Shrimp MCP service. This application provides a comprehensive interface for task creation, tracking, and memory management with multi-project support.
 
+the frontend of [shrimp-backend](https://github.com/weinaike/shrimp-backend)
+
 ## Features
 
 - **Task Management**: Create, edit, delete, and track tasks with status management
