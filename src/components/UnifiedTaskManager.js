@@ -5,6 +5,7 @@ import TaskTableView from './TaskTableView';
 import TaskDetailModal from './TaskDetailModal';
 import CreateTaskModal from './CreateTaskModal';
 import TaskMemoryModal from './TaskMemoryModal';
+import SessionStateModal from './SessionStateModal';
 import { apiEndpoints } from '../api/config';
 
 function UnifiedTaskManager() {
@@ -17,6 +18,7 @@ function UnifiedTaskManager() {
   const [showDetail, setShowDetail] = useState(false);
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [showMemoryModal, setShowMemoryModal] = useState(false);
+  const [showSessionStateModal, setShowSessionStateModal] = useState(false);
   const [refreshCounter, setRefreshCounter] = useState(0);
 
   // 当选择项目变化时，重新加载任务
@@ -151,6 +153,13 @@ function UnifiedTaskManager() {
                   >
                     <i className="bi bi-journal-text me-1"></i>
                     记忆查看
+                  </button>
+                  <button
+                    className="btn btn-outline-info hover-lift"
+                    onClick={() => setShowSessionStateModal(true)}
+                  >
+                    <i className="bi bi-database me-1"></i>
+                    会话状态
                   </button>
                   <button
                     className="btn btn-outline-secondary hover-lift"
@@ -299,6 +308,12 @@ function UnifiedTaskManager() {
         show={showMemoryModal}
         handleClose={() => setShowMemoryModal(false)}
         task={null}
+        projectId={selectedProject}
+      />
+
+      <SessionStateModal 
+        show={showSessionStateModal}
+        handleClose={() => setShowSessionStateModal(false)}
         projectId={selectedProject}
       />
     </div>

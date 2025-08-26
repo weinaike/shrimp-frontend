@@ -16,6 +16,14 @@ export const apiEndpoints = {
   memories: (projectId) => `${API_BASE_URL}/${projectId}/memories`,
   memory: (projectId, memoryId) => `${API_BASE_URL}/${projectId}/memories/${memoryId}`,
   
+  // 会话状态相关
+  sessions: (projectId) => `${API_BASE_URL}/${projectId}/sessions`,
+  sessionDocuments: (projectId, sessionId) => `${API_BASE_URL}/${projectId}/sessions/${sessionId}/documents`,
+  deleteSessionDocuments: (projectId, sessionId) => `${API_BASE_URL}/${projectId}/sessions/${sessionId}/documents`,
+  
+  // JSON文档相关
+  deleteJsonDocument: (projectId, documentId) => `${API_BASE_URL}/${projectId}/json-documents/${documentId}`,
+    
   // 健康检查
   health: () => `${API_BASE_URL}/health`,
 };

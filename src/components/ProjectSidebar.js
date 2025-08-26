@@ -121,15 +121,42 @@ function ProjectSidebar({ selectedProject, onProjectSelect, className = '' }) {
           {projects.map((project, index) => (
             <ListGroup.Item
               key={`${project}-${index}`}
-              action
-              active={selectedProject === project}
-              onClick={() => onProjectSelect(project)}
               className="border-0 px-3 py-2 d-flex justify-content-between align-items-center"
-              style={{ cursor: 'pointer' }}
+              style={{ 
+                cursor: 'default',
+                backgroundColor: selectedProject === project ? '#e3f2fd' : 'transparent',
+                borderLeft: selectedProject === project ? '3px solid #007bff' : 'none'
+              }}
             >
-              <div>
+              <div 
+                onClick={() => onProjectSelect(project)}
+                className="d-flex align-items-center flex-grow-1"
+                style={{ 
+                  cursor: 'pointer',
+                  padding: '4px',
+                  borderRadius: '4px',
+                  transition: 'background-color 0.15s ease-in-out'
+                }}
+                onMouseEnter={(e) => {
+                  if (selectedProject !== project) {
+                    e.target.style.backgroundColor = '#f8f9fa';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (selectedProject !== project) {
+                    e.target.style.backgroundColor = 'transparent';
+                  }
+                }}
+              >
                 <i className="bi bi-folder2-open me-2 text-primary"></i>
-                <span className="text-truncate" style={{maxWidth: '120px'}} title={project}>
+                <span 
+                  className="text-truncate" 
+                  style={{
+                    maxWidth: '120px',
+                    color: selectedProject === project ? '#0056b3' : '#212529'
+                  }} 
+                  title={project}
+                >
                   {project === 'default' ? '默认项目' : 
                     project.length > 20 ? project.substring(0, 10) + '...' + project.substring(project.length-10) : project
                   }

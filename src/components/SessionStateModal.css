@@ -1,0 +1,55 @@
+/* SessionStateModal 组件的额外样式 */
+
+/* 隐藏下拉箭头 */
+.dropdown-toggle-no-caret::after {
+  display: none !important;
+}
+
+.dropdown-toggle-no-caret:focus {
+  box-shadow: none !important;
+}
+
+/* 选中状态的叶节点样式增强 */
+.tree-doc-node-selected {
+  background-color: #0d6efd !important;
+  color: white !important;
+  font-weight: 500 !important;
+  border-radius: 4px !important;
+}
+
+.tree-doc-node-selected:hover {
+  background-color: #0b5ed7 !important;
+}
+
+/* 会话节点选中状态 */
+.tree-session-node-selected {
+  background-color: #e3f2fd !important;
+  border-left: 4px solid #0d6efd !important;
+}
+
+/* 类型节点选中状态 */
+.tree-type-node-selected {
+  background-color: #e8f5e8 !important;
+  border-left: 3px solid #198754 !important;
+}
+
+/* 下拉按钮在hover时显示 */
+.tree-node:hover .dropdown-toggle {
+  opacity: 1 !important;
+}
+
+/* 叶节点hover效果 */
+.tree-doc-node:hover {
+  background-color: #f8f9fa !important;
+  transition: all 0.15s ease !important;
+}
+
+/* 删除确认对话框样式优化 */
+.btn-outline-danger {
+  transition: all 0.2s ease;
+}
+
+.btn-outline-danger:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
