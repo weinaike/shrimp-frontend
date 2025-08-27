@@ -377,11 +377,17 @@ function SessionStateModal({ show, handleClose, projectId }) {
 
   const formatDate = (dateString) => {
     if (!dateString) return 'N/A';
-    try {
-      return new Date(dateString).toLocaleString('zh-CN');
-    } catch {
-      return 'N/A';
-    }
+    const date = new Date(dateString);
+    return date.toLocaleDateString('zh-CN', {
+      timeZone: 'Asia/Shanghai',  // 指定时区为CST
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,  // 24小时制
+    });
   };
 
   const getDocumentsByType = (documents, type) => {
@@ -420,7 +426,7 @@ function SessionStateModal({ show, handleClose, projectId }) {
                 <i className={`bi ${isSessionExpanded ? 'bi-chevron-down' : 'bi-chevron-right'} me-2`}></i>
                 <i className="bi bi-chat-dots me-2 text-primary"></i>
                 <span style={treeStyles.treeNodeText} title={sessionId}>
-                  {sessionId.length > 25 ? `${sessionId.substring(0, 25)}...` : sessionId}
+                  {sessionId}
                 </span>
                 <Badge bg="info" className="ms-2" style={{ fontSize: '10px' }}>{session.document_count}</Badge>
                 
@@ -516,7 +522,7 @@ function SessionStateModal({ show, handleClose, projectId }) {
                                 >
                                   <i className="bi bi-file-text me-2 text-muted"></i>
                                   <span style={treeStyles.treeNodeText} title={doc.name}>
-                                    {doc.name ? (doc.name.length > 15 ? `${doc.name.substring(0, 15)}...` : doc.name) : '未命名文档'}
+                                    {doc.name ? (doc.name.length > 25 ? `${doc.name.substring(0, 25)}...` : doc.name) : '未命名文档'}
                                   </span>
                                   <small className="text-muted ms-2" style={{ fontSize: '10px' }}>
                                     {doc.access_count || 0}
@@ -617,7 +623,7 @@ function SessionStateModal({ show, handleClose, projectId }) {
                                 >
                                   <i className="bi bi-file-text me-2 text-muted"></i>
                                   <span style={treeStyles.treeNodeText} title={doc.name}>
-                                    {doc.name ? (doc.name.length > 15 ? `${doc.name.substring(0, 15)}...` : doc.name) : '未命名文档'}
+                                    {doc.name ? (doc.name.length > 25 ? `${doc.name.substring(0, 25)}...` : doc.name) : '未命名文档'}
                                   </span>
                                   <small className="text-muted ms-2" style={{ fontSize: '10px' }}>
                                     {doc.access_count || 0}

@@ -59,11 +59,14 @@ function EnhancedTaskList({ projectId, refreshTasks }) {
     if (!dateString) return 'N/A';
     const date = new Date(dateString);
     return date.toLocaleDateString('zh-CN', {
+      timeZone: 'Asia/Shanghai',  // 指定时区为CST
       year: 'numeric',
       month: 'long',
       day: 'numeric',
       hour: '2-digit',
-      minute: '2-digit'
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,  // 24小时制
     });
   };
 
